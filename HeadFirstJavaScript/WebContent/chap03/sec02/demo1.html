@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript操作Dom结点</title>
+<script type="text/javascript">
+
+	var a=1;
+	function modifyDOM(){
+		if(a==1){
+			a=0;
+			document.getElementById("txt").innerHTML="Jack：";
+			document.getElementById("userName").value="没事儿你点一下就回去了";
+		}else{
+			a=1;
+			document.getElementById("txt").innerHTML="不叫Jack的臭傻逼：";
+			document.getElementById("userName").value="我不叫做Jack你有种别点按钮"
+		}
+	}
+	function addDOM(){
+		var para=document.createElement("p");
+		var node=document.createTextNode("...前...");
+		var para2=document.createElement("p");
+		var node2=document.createTextNode("...后...");
+		para.appendChild(node);
+		para2.appendChild(node2);
+		var parent=document.getElementById("parent");
+		var son1=document.getElementById("son1");
+		parent.insertBefore(para,son1);
+		parent.appendChild(para2);
+	}
+	function removeDOM(){
+		var parent=document.getElementById("parent");
+		var son1=document.getElementById("son1");
+		parent.removeChild(son1);
+	}
+</script>
+</head>
+<body>
+
+<div id="parent">
+	<div id="son1">
+		<font id="txt" style="width:20%">不叫Jack的臭傻逼：</font><input type="text" id="userName" name="userName" value="我不叫做Jack你有种别点按钮" style="width:30%"/>
+	</div>
+</div>
+<input type="button" value="劳资是按钮看见没" onclick="modifyDOM()"/>
+<input type="button" value="添加DOM结点" onclick="addDOM()"/>
+<input type="button" value="删除DOM结点" onclick="removeDOM()"/>
+
+</body>
+</html>

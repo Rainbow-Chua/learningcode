@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>"并集"选择器</title>
+<style type="text/css">
+	p{
+		font-size:30px;
+	}
+	/*交集选择器：既是p标签又选c类别的标签将拥有如下属性，且继承原有属性*/
+	p.c{
+		text-decoration: underline;
+	}
+	.c{
+		color:blue;
+	}
+	/*并集选择器，以下标签或id或类别将同时增加如下属性*/
+	p,h1,.c,#d1{
+		background-color: lightgray;
+	}
+</style>
+</head>
+<body>
+<p id="p1">p1</p>
+<p id="p2">p2</p>
+<p id="p3" class="c">p3</p>
+<h1 id="h1" class="c">h1</h1>
+<div id="d1" class="c">div1</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>盒子定位fixed</title>
+<style type="text/css">
+/*固定定位，以浏览器窗口为基准进行定位*/
+	.parent{
+		position:relative;
+		padding:15px;
+		background-color: green;
+		border:1px solid red;
+	}
+	.son{
+		padding:10px;
+		position:fixed;
+		left:0px;
+		top:0px;
+		margin:5px;
+		background-color: gray;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+<div class="parent">
+	<div class="son">儿子</div>
+</div>
+</body>
+</html>

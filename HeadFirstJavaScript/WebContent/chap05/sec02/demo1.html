@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript window对象常用方法以及事件</title>
+<script type="text/javascript">
+	function f() {
+		var date = new Date();
+		var y = date.getFullYear();
+		var m = date.getMonth();
+		var d = date.getDay();
+		var h = date.getHours();
+		var min = date.getMinutes();
+		var s = date.getSeconds();
+		min = check(min);
+		s = check(s);
+		var time = h + ":" + min + ":" + s;
+		document.getElementById("test").innerHTML = y + "年" + m + "月" + d + "日"
+				+ time
+	}
+	function check(a) {
+		if (a < 10) {
+			a = "0" + a;
+		}
+		return a;
+	}
+	function init() {
+		alert("文档加载完毕了");
+	}
+	window.setInterval("f()", 1000);
+	window.open("http://www.baidu.com");
+	window.onresize = function() {
+		alert("大小变了");
+	}
+</script>
+</head>
+<body onload="init()">
+	<p id="test"></p>
+</body>
+</html>

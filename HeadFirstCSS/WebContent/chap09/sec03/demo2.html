@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>盒子定位relative</title>
+<style type="text/css">
+/*相对定位，相对于原本的位置偏移指定的距离*/
+	.parent{
+		padding:15px;
+		background-color: green;
+		border:1px solid red;
+	}
+	.son{
+		padding:10px;
+		position:relative;
+		left:30px;
+		top:30px;
+		margin:5px;
+		background-color: gray;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+<div class="parent">
+	<div class="son">儿子</div>
+</div>
+</body>
+</html>

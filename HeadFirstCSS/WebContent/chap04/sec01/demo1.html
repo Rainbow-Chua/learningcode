@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>"交集"选择器</title>
+<style type="text/css">
+	p{
+		font-size:30px;
+	}
+	/*既有p又选c的标签将拥有如下属性，且继承原有属性*/
+	p.c{
+		text-decoration: underline;
+	}
+	.c{
+		color:blue
+	}
+</style>
+</head>
+<body>
+<p id="p1">p1</p>
+<p id="p2">p2</p>
+<p id="p3" class="c">p3</p>
+<h1 id="h1" class="c">h1</h1>
+<div id="d1" class="c">div1</div>
+</body>
+</html>

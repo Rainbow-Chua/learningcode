@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>盒子定位Absolute</title>
+<style type="text/css">
+/*绝对定位，以它的包含框(以最近的有position的)为基准进行偏移*/
+	.parent{
+		position:relative;
+		padding:15px;
+		background-color: green;
+		border:1px solid red;
+	}
+	.son{
+		padding:10px;
+		position:absolute;
+		left:0px;
+		top:0px;
+		margin:5px;
+		background-color: gray;
+		border:1px solid black;
+	}
+</style>
+</head>
+<body>
+<div class="parent">
+	<div class="son">儿子</div>
+</div>
+</body>
+</html>
