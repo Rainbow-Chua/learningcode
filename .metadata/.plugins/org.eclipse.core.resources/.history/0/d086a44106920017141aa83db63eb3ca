@@ -1,0 +1,14 @@
+package com.javaRainbow.jdbc_demo;
+
+public class Sort {
+
+	public static void main(String[] args) {
+		ArrayList<int> arrayList = new ArrayList<int>();
+		for(int i=0;i<n-1;i++)
+		{
+			for(int j=0;j<n-1-i;j++){
+				if()
+			}
+		}
+	}
+}

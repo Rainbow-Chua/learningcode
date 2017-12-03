@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.rainbowpro.dbutil&apos; to &apos;com.rainbowpro.util&apos;&#x0D;&#x0A;- Original project: &apos;BookManager&apos;&#x0D;&#x0A;- Original element: &apos;BookManager/src/com.rainbowpro.dbutil&apos;&#x0D;&#x0A;- Renamed element: &apos;BookManager/src/com.rainbowpro.util&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings&#x0D;&#x0A;- Rename subpackages of the package" description="Rename package &apos;com.rainbowpro.dbutil&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;com.rainbowpro.dbutil" name="com.rainbowpro.util" qualified="false" references="true" stamp="1505350279602" textual="false" version="1.0"/>
+</session>

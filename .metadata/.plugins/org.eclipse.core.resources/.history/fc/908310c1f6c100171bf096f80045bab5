@@ -1,0 +1,69 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	/*
+	*request.getSchema()可以返回当前页面使用的协议，就是上面例子中的“http”
+	*request.getServerName()可以返回当前页面所在的服务器的名字，就是上面例子中的“localhost"
+	*request.getServerPort()可以返回当前页面所在的服务器使用的端口,就是80，
+	*request.getContextPath()可以返回当前页面所在的应用的名字，就是上面例子中的myblog
+	*/
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<style>
+.div {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	height: 150px;
+	background: orange;
+	position: fixed;
+	top: 50%;
+}
+body{
+	background-image: url("images/bgi.jpg");
+	background-repeat: repeat;
+}
+</style>
+<script type="text/javascript">
+	function checkUserName(obj){  
+        var username = obj; 
+        if(username==""){  
+              alert("用户名不能为空"); 
+        }else{
+        }
+    }
+	function checkPassword(obj){  
+        var password = obj;
+        if(password==""){  
+              alert("密码不能为空");    
+        }
+    }
+</script>
+</head>
+
+<%@ include file="Header.jsp"%>
+<body>
+	<div class="div">
+		<img alt="" src="images/timg1.jpg">
+		<form action="login.do" method="post" style="display: inline; relative; top: 20px;">
+			<!--所提交的表单，action为"login.do"，发出请求是post-->
+			<p>
+				账号:<input id="username" type="text" name="id" style="width: 100;" onblur="checkUserName(this.value)"  />
+			</p>
+			<!--所输入的"账号"在提交后的标示是"id"，下同 -->
+
+			<p>
+				密码:<input id="password" type="password" name="password" style="width: 100;" onblur="checkPassword(this.value)" />
+			<p>
+				<input type="submit" value="登录">
+			</p>
+			<!--表单提交按钮，显示名称为"登录"-->
+		</form>
+	</div>
+</body>
+<%@ include file="Footer.jsp"%>
+</html>

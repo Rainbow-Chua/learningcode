@@ -1,0 +1,41 @@
+package com.javaRainbow.jdbc_demo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class Test {
+
+	private static DBUtil dbUntil=new DBUtil();
+	/**
+	 * 转出
+	 * @param con
+	 * @param accountName
+	 * @param account
+	 * @throws Exception
+	 */
+	private static void outCount(Connection con,BankAccount ba) throws Exception{
+		String sql="update t_account set accountBalance=accountBalance-? where accountNAme=?";
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, ba.getBalance());
+		pstmt.setString(2, ba.getAccountName());
+		pstmt.executeUpdate();	
+	}
+	/**
+	 * 转入
+	 * @param con
+	 * @param accountName
+	 * @param account
+	 * @throws Exception
+	 */
+	private static void inCount(Connection con,BankAccount ba) throws Exception{
+		String sql="update t_account set account=accountBalance+? where accountNAme=?";
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, ba.getBalance());
+		pstmt.setString(2, ba.getAccountName()());
+		pstmt.executeUpdate();	
+	}
+	public static void main(String[] args) {
+		
+		
+	}
+}

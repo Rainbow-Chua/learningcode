@@ -1,0 +1,44 @@
+package com.rainbowpro.view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JInternalFrame;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.ImageIcon;
+
+public class InternalFrameTest extends JInternalFrame {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InternalFrameTest frame = new InternalFrameTest();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public InternalFrameTest() {
+		setBackground(Color.RED);
+		setTitle("\u5173\u4E8ERainbow");
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(InternalFrameTest.class.getResource("/images/java1234.png")));
+		label.setBounds(102, 93, 233, 94);
+		getContentPane().add(label);
+
+	}
+}

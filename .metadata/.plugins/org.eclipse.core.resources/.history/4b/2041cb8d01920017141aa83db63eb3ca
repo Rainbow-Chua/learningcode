@@ -1,0 +1,77 @@
+package com.javaRainbow.jdbc_demo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Savepoint;
+import java.util.Scanner;
+
+public class Test {
+
+	private static DBUtil dbUntil=new DBUtil();
+	/**
+	 * 转出
+	 * @param con
+	 * @param accountName
+	 * @param account
+	 * @throws Exception
+	 */
+	private static void outCount(Connection con,BankAccount ba, int account) throws Exception{
+		String sql="update t_account set accountBalance=accountBalance-? where accountName=?";
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, account);
+		pstmt.setString(2, ba.getAccountName());
+		pstmt.executeUpdate();	
+		ba.setBalance(ba.getBalance()-account);
+	}
+	/**
+	 * 转入
+	 * @param con
+	 * @param accountName
+	 * @param account
+	 * @throws Exception
+	 */
+	private static void inCount(Connection con,BankAccount ba, int account) throws Exception{
+		String sql="update t_account set account=accountBalance+? where accountName=?";
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, ba.getBalance());
+		pstmt.setString(2, ba.getAccountName());
+		pstmt.executeUpdate();
+		ba.setBalance(ba.getBalance()+account);
+	}
+	public static void main(String[] args) {
+		Connection con=null;
+		Savepoint sp=null;
+		try {
+			con=dbUntil.getCon();
+			con.setAutoCommit(false);//取消自动提交，打开事务处理
+			BankAccount zs = new BankAccount(1, "张三", 1000);
+			BankAccount ls = new BankAccount(2, "李四", 1000);
+			Scanner scanner = new Scanner(System.in);
+			int account= scanner.nextInt();
+			System.out.println("张三开始向李四转账"+account+"元");
+			outCount(con, zs, account);
+			sp=con.setSavepoint();//设置一个保存点
+			inCount(con, ls, account);
+			System.out.println("转账成功");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			try {
+				con.rollback(sp);//回滚
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			try {
+				con.commit();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+}

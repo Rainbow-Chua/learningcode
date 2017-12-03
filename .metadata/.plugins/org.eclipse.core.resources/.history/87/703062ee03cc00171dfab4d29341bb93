@@ -1,0 +1,84 @@
+package com.rainbowpro.servlet;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.rainbowpro.dao.BookDao;
+import com.rainbowpro.model.Book;
+import com.rainbowpro.model.BookType;
+import com.rainbowpro.util.DbUtil;
+
+/**
+ * Servlet implementation class MyServletForLogin
+ */
+public class MyServletForAddBook extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private DbUtil dbUtil = new DbUtil();
+	private BookDao bookDao = new BookDao();
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MyServletForAddBook() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String bookName=request.getParameter("bookName");
+	    String bookAuthor=request.getParameter("bookAuthor");
+	    String[] bookTypeInfo=request.getParameter("bookType").split(",");
+	    int bookTypeId=Integer.parseInt(bookTypeInfo[1]);
+	    bookName=new String(bookName.getBytes("iso8859-1"),"UTF-8");
+	    bookAuthor=new String(bookAuthor.getBytes("iso8859-1"),"UTF-8");
+        Connection conn = null;  
+        ResultSet res = null;  
+        Book book = new Book(bookName, bookAuthor, bookTypeId);
+        //声明一个ArrayList.用来存放Book类中的数据  
+        ArrayList<Book> list = new ArrayList<Book>();  
+        try {  
+        	conn = dbUtil.getCon();
+            res = bookDao.list(conn, book);  
+            while (res.next()) {  
+                //建立了一个实体类,用来存放从数据库中拿到的数据  
+                Book book1 = new Book();  
+                book.setId(Integer.parseInt(res.getString("id")));
+                book.setBookName(res.getString("bookName"));
+                book.setAuthor(res.getString("author"));  
+                book.setPrice(Float.parseFloat(res.getString("price")));  
+                book.setSex(res.getString("sex")); 
+                book.setBookDesc(res.getString("bookDesc")); 
+                book.setBookTypeName(res.getString("bookTypeName"));
+                list.add(book1);  
+            }  
+            //将list数据打包  
+            request.setAttribute("list", list);  
+              
+        } catch (Exception e) {  
+            e.printStackTrace();  
+        }  
+          
+        //将list数据发送到.jap文件中  
+        request.getRequestDispatcher("BookManager.jsp").forward(request, response);  
+	
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}  	
+			
+
+}

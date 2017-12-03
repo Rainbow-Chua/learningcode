@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;rabbit.jpg&apos; to &apos;javaPrimior/src/com.java.chaptext&apos;&#x0D;&#x0A;- Original project: &apos;BookManager&apos;&#x0D;&#x0A;- Destination element: &apos;javaPrimior/src/com.java.chaptext&apos;&#x0D;&#x0A;- Original element: &apos;rabbit.jpg&apos;" description="Copy file" destination="=javaPrimior/src&lt;com.java.chaptext" element1="src/images/rabbit.jpg" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1505723599532" units="0" version="1.0"/>
+</session>
