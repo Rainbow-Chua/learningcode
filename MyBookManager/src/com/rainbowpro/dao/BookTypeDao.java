@@ -17,12 +17,12 @@ public class BookTypeDao {
 	 * @throws Exception
 	 */
 	public int add(Connection con, BookType bookType)throws Exception{
-		String sql = "insert into t_bookType values(null,?,null,?)";
+		String sql = "insert into t_bookType values(null,?,0,?)";
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		pstmt.setString(1, bookType.getBookTypeName());
 		pstmt.setString(2, bookType.getBookTypeDesc());
 		int result = pstmt.executeUpdate();
-		pstmt.close();
+		System.out.println(result);
 		return result;
 	}
 	/**

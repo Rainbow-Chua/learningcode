@@ -56,6 +56,7 @@ public class MyServletForAddBookType extends HttpServlet {
 					response.sendRedirect("addBookTypeFailed.jsp");
 				}
 			} catch (Exception e2) {
+				e2.printStackTrace();
 				// TODO: handle exception
 			}finally{
 				try {
