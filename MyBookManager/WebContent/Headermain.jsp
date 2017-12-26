@@ -46,6 +46,7 @@
 			<li class="g-gc"><a href="BookManager.jsp" class="a-1">图书管理</a></li>
 			<li class="g-gc"><a href="addBookType.jsp" class="a-1">图书类别增加</a></li>
 			<li class="g-gc"><a href="BookTypeManager.jsp" class="a-1">图书类别管理</a></li>
+			<li class="g-gc"><a href="login.jsp" class="a-1">登出</a></li>
 		</ul>
 	</div>
 </body>

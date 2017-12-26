@@ -42,17 +42,30 @@ public class BookDao {
 	 * @throws Exception
 	 */
 	public ResultSet list(Connection con, Book book)throws Exception{
-		StringBuffer sb = new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
-		if(StringUtil.isNotEmpty(book.getBookName())){
-			sb.append(" and bookName like '%"+book.getBookName()+"%'");
+		if(book.getBookTypeId()==0){
+			StringBuffer sb = new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
+			if(StringUtil.isNotEmpty(book.getBookName())){
+				sb.append(" and bookName like '%"+book.getBookName()+"%'");
+			}
+			if(StringUtil.isNotEmpty(book.getAuthor())){
+				sb.append(" and b.author like '%"+book.getAuthor()+"%'");
+			}
+			PreparedStatement pstmt = con.prepareStatement(sb.toString()+" order by b.id");
+			return pstmt.executeQuery();
+		}else{
+			
+			StringBuffer sb = new StringBuffer("select * from t_book b,t_bookType bt where b.bookTypeId=bt.id");
+			if(StringUtil.isNotEmpty(book.getBookName())){
+				sb.append(" and bookName like '%"+book.getBookName()+"%'");
+			}
+			if(StringUtil.isNotEmpty(book.getAuthor())){
+				sb.append(" and b.author like '%"+book.getAuthor()+"%'");
+			}
+			if(book.getBookTypeId() != null && book.getBookTypeId() != -1){
+				sb.append(" and b.bookTypeId="+book.getBookTypeId());
+			}
+			PreparedStatement pstmt = con.prepareStatement(sb.toString()+" order by b.id");
+			return pstmt.executeQuery();
 		}
-		if(StringUtil.isNotEmpty(book.getAuthor())){
-			sb.append(" and b.author like '%"+book.getAuthor()+"%'");
-		}
-		if(book.getBookTypeId() != null && book.getBookTypeId() != -1){
-			sb.append(" and b.bookTypeId="+book.getBookTypeId());
-		}
-		PreparedStatement pstmt = con.prepareStatement(sb.toString()+" order by b.id");
-		return pstmt.executeQuery();
 	}
 }

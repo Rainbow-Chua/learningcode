@@ -73,6 +73,7 @@ h2 {
 			</p>
 			<p style="display: inline;">
 				图书类别: <select name="bookType" style="width: 150px;">
+							<option value="all,0">所有</option>
 					<%
 						DbUtil dbUtil = new DbUtil();
 						BookTypeDao bookTypeDao = new BookTypeDao();
